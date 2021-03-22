@@ -1,5 +1,8 @@
 package com.codewithmosh;
 
+import com.codewithmosh.memento.Editor;
+import com.codewithmosh.memento.History;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -19,6 +22,20 @@ public class Main {
 
         drawUIControl(new CheckBox());
         drawUIControl(new TextBox());
+
+        var editor = new Editor();
+        var history = new History();
+        editor.setContent("AAA");
+        history.push(editor.createState());
+        editor.setContent("BBB");
+        history.push(editor.createState());
+        editor.setContent("CCC");
+        editor.restore(history.pop());
+        System.out.println(editor.getContent());
+
+
+
+
 
 
 
