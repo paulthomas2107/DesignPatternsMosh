@@ -2,6 +2,10 @@ package com.codewithmosh;
 
 import com.codewithmosh.memento.Editor;
 import com.codewithmosh.memento.History;
+import com.codewithmosh.state.BrushTool;
+import com.codewithmosh.state.Canvas;
+import com.codewithmosh.state.EraserTool;
+import com.codewithmosh.state.SelectionTool;
 
 public class Main {
 
@@ -32,6 +36,18 @@ public class Main {
         editor.setContent("CCC");
         editor.restore(history.pop());
         System.out.println(editor.getContent());
+
+        var canvas = new Canvas();
+        canvas.setCurrentTool(new SelectionTool());
+        canvas.mouseDown();
+        canvas.mouseUp();
+        canvas.setCurrentTool(new EraserTool());
+        canvas.mouseDown();
+        canvas.mouseUp();
+        canvas.setCurrentTool(new BrushTool());
+        canvas.mouseDown();
+        canvas.mouseUp();
+
 
 
 
